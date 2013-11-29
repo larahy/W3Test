@@ -39,6 +39,7 @@ class Airport
     raise "Yikes, no room at the inn." if full?
     raise "Weather conditions unfavourable" if !sunny?
     planes << plane 
+    plane.land
   end 
 
   def execute_take_off_of(plane)
@@ -48,6 +49,7 @@ class Airport
     end  
     plane.take_off
   end
+
 
   alias :execute_landing_of :park
 end 

@@ -5,19 +5,19 @@ class Plane
   end 
 
   def default
-    @grounded = true
+    @flying = true
   end
 
-  def grounded?
-    @grounded
+  def flying?
+    @flying
   end
 
-  def take_off
-    @grounded = false
+  def land
+    @flying = false
     self
   end
 
-  alias :land :default
+  alias :take_off :default
 
   def planes
     @planes ||= []

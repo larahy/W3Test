@@ -33,7 +33,7 @@ describe Airport do
       airport.execute_take_off_of(plane)
       airport.execute_landing_of(plane)
       expect(airport.planecount).to eq(1)
-      expect(plane).not_to be_grounded
+      expect(plane).not_to be_flying
     end
   end
 
@@ -55,13 +55,11 @@ describe Airport do
     end
 
     it 'should not allow planes to take off if it is stormy' do
-      airport.default
-      airport.park(plane)
-      airport.stormy
+      airport.stub(:michael_fish){false}
       expect(lambda { airport.execute_take_off_of(plane) }).to raise_error(RuntimeError)
     end 
 
-    it 'should not allow planes to land if it is stormy' do
+    it 'should not allow planes to land in the middle of a storm' do
       airport.stub(:michael_fish){false}
       expect(lambda { airport.execute_landing_of(plane) }).to raise_error(RuntimeError)
     end 
