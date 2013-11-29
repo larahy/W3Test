@@ -1,9 +1,6 @@
 require_relative 'plane'
-require_relative 'location'
 
 class Airport
-  
-  include Location
 
   DEFAULT_CAPACITY = 10
 
@@ -19,4 +16,33 @@ class Airport
     @capacity = value
   end
 
+   def planes
+    @planes ||= []
+  end
+
+  def planecount
+    planes.count
+  end
+
+  def full?
+    planecount == capacity
+  end
+
+  def empty?
+    planecount == 0
+  end
+
+  def park(plane)
+    raise "Yikes, no room at the inn." if full?
+    planes << plane 
+  end 
+
+  def execute_take_off_of(plane)
+    planes.delete_if do |planeref| 
+      planeref == plane 
+    end  
+    plane.take_off
+  end
+
+  alias :execute_landing_of :park
 end 

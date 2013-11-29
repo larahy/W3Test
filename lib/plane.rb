@@ -14,6 +14,7 @@ class Plane
 
   def take_off
     @grounded = false
+    self
   end
 
   alias :land :default
