@@ -1,6 +1,9 @@
 require_relative 'plane'
+require_relative 'weather'
 
 class Airport
+
+  include Weather
 
   DEFAULT_CAPACITY = 10
 
@@ -34,10 +37,12 @@ class Airport
 
   def park(plane)
     raise "Yikes, no room at the inn." if full?
+    raise "Weather conditions unfavourable" if !sunny?
     planes << plane 
   end 
 
   def execute_take_off_of(plane)
+    raise "Weather conditions unfavourable" if !sunny?
     planes.delete_if do |planeref| 
       planeref == plane 
     end  

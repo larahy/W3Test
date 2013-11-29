@@ -9,16 +9,17 @@ class WeatherGod; include Weather
 
     it 'should be sunny by default' do
       weather.default
-      expect(weather).to be_sunshine
+      expect(weather).to be_sunny
     end
 
     it 'should not always be sunny' do
       weather.stormy
-      expect(weather).not_to be_sunshine
+      expect(weather).not_to be_sunny
     end
 
-    # it 'should stop planes from taking off if there is no sunshine' do
-
-
+    it 'should assign weather status randomly' do
+      weather.michael_fish(0.8)
+      expect(weather).not_to be_sunny
+    end 
   end 
 end

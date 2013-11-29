@@ -1,17 +1,26 @@
 module Weather
 
    def default
-    @sunshine = true
+    @sunny = true
   end
 
-  def sunshine?
-    @sunshine
+  def sunny?
+    @sunny
   end
 
   def stormy
-    @sunshine = false
+    @sunny = false
+  end
+
+  def michael_fish(figure=nil)
+    figure ||= rand()
+    if figure >= 0.5
+      stormy
+    else
+      default
+    end
   end
 
 end 
-
+  
  

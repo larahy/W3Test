@@ -1,5 +1,6 @@
 require_relative '../lib/airport'
 require_relative '../lib/plane'
+require_relative '../lib/weather'
  
 describe Airport do
 
@@ -12,6 +13,7 @@ describe Airport do
   end
 
   it 'should allow planes to be parked at the airport' do
+    airport.default
     airport.park(plane)
     expect(airport.planecount).to eq(1)
   end
@@ -19,12 +21,14 @@ describe Airport do
   context 'Take off and Landing' do
 
     it 'should allow planes to take off' do
+      airport.default
       airport.park(plane)
       airport.execute_take_off_of(plane)
       expect(airport.planecount).to eq(0)
     end
 
     it 'should allow planes to land' do
+      airport.default
       airport.park(plane)
       airport.execute_take_off_of(plane)
       airport.execute_landing_of(plane)
@@ -36,11 +40,19 @@ describe Airport do
   context 'traffic control' do
 
     it 'should not allow a plane to land if the airport is full' do
+      pointless_airport.default
       pointless_airport.park(plane)
       # small_airport.execute_landing_of(plane)
       expect(lambda { pointless_airport.park(plane) }).to raise_error(RuntimeError)
     end 
-  
+
+    it 'should not allow planes to take off if it is stormy' do
+      airport.default
+      airport.park(plane)
+      airport.stormy
+      expect(lambda { airport.execute_take_off_of(plane) }).to raise_error(RuntimeError)
+    end 
+
   end 
 
 end
