@@ -45,6 +45,14 @@ describe Airport do
       # small_airport.execute_landing_of(plane)
       expect(lambda { pointless_airport.park(plane) }).to raise_error(RuntimeError)
     end 
+  end
+
+  context 'weather conditions' do
+
+    it 'should either be sunny or stormy at the airport' do
+      airport.michael_fish(0.8)
+      expect(airport).not_to be_sunny
+    end
 
     it 'should not allow planes to take off if it is stormy' do
       airport.default
@@ -53,8 +61,11 @@ describe Airport do
       expect(lambda { airport.execute_take_off_of(plane) }).to raise_error(RuntimeError)
     end 
 
+    it 'should not allow planes to land if it is stormy' do
+      airport.stub(:michael_fish){false}
+      expect(lambda { airport.execute_landing_of(plane) }).to raise_error(RuntimeError)
+    end 
   end 
-
 end
 
 
