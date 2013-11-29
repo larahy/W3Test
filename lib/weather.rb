@@ -14,7 +14,7 @@ module Weather
 
   def michael_fish(figure=nil)
     figure ||= rand()
-    if figure >= 0.5
+    if figure >= 0.8
       stormy
     else
       default
