@@ -69,7 +69,7 @@ class Airport
     if self.michael_fish() == true
       jfk.arrive(planes)
       jfk.depart(planes)
-    else
+    els
       self.michael_fish()
     end
   end
