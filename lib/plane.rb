@@ -18,5 +18,13 @@ class Plane
 
   alias :land :default
 
+  def planes
+    @planes ||= []
+  end
+
+  def planecount
+    planes.count
+  end
+
 
 end 
