@@ -35,14 +35,12 @@ class Airport
     planecount == 0
   end
 
-  def park(plane)
+  def execute_landing_of(plane)
     raise "Yikes, no room at the inn." if full?
     raise "Weather conditions unfavourable" if !sunny?
     planes << plane 
     plane.land
   end 
-
-  alias :execute_landing_of :park
 
   def execute_take_off_of(plane)
     raise "Weather conditions unfavourable" if !sunny?
@@ -69,10 +67,9 @@ class Airport
     if self.michael_fish() == true
       jfk.arrive(planes)
       jfk.depart(planes)
-    els
+    else
       self.michael_fish()
     end
   end
-
 
 end 
