@@ -18,7 +18,7 @@ class WeatherGod; include Weather
     end
 
     it 'should assign weather status randomly' do
-      weather.michael_fish(0.8)
+      weather.weather_forecast(0.8)
       expect(weather).not_to be_sunny
     end 
   end 

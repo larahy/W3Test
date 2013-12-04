@@ -12,7 +12,7 @@ module Weather
     @sunny = false
   end
 
-  def michael_fish(figure=nil)
+  def weather_forecast(figure=nil)
     figure ||= rand()
     if figure >= 0.8
       stormy

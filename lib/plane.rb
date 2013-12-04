@@ -19,12 +19,8 @@ class Plane
 
   alias :take_off :default
 
-  def planes
-    @planes ||= []
-  end
-
   def planecount
-    planes.count
+    plane.count
   end
 
 

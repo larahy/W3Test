@@ -39,17 +39,17 @@ describe Airport do
   context 'weather conditions' do
 
     it 'should either be sunny or stormy at the airport' do
-      airport.michael_fish(0.8)
+      airport.weather_forecast(0.8)
       expect(airport).not_to be_sunny
     end
 
     it 'should not allow planes to take off if it is stormy' do
-      airport.stub(:michael_fish){false}
+      airport.stub(:weather_forecast){false}
       expect(lambda { airport.execute_take_off_of(plane) }).to raise_error(RuntimeError)
     end 
 
     it 'should not allow planes to land in the middle of a storm' do
-      airport.stub(:michael_fish){false}
+      airport.stub(:weather_forecast){false}
       expect(lambda { airport.execute_landing_of(plane) }).to raise_error(RuntimeError)
     end 
   end 

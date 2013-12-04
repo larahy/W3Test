@@ -63,13 +63,14 @@ class Airport
   end
 
   def grand_finale(planes, jfk)
-    self.michael_fish()
-    if self.michael_fish() == true
+    self.weather_forecast()
+    if self.weather_forecast() == true
       jfk.arrive(planes)
       jfk.depart(planes)
     else
-      self.michael_fish()
+      self.weather_forecast()
     end
   end
+ 
 
 end 
